@@ -1,6 +1,4 @@
 package model;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Column {
@@ -11,12 +9,10 @@ public class Column {
         this.rowSize= rowSize;
     }
 
-
-
-//    public void settingRows(){
-//        int numberOfRow = (int)(Math.random()*rowSize);
-//        this.rows = settingRandomNumbers().subList(0,numberOfRow);
-//    }
+    public void settingRows(List<Integer> shuffleRowsExceptPreviousRows){
+        int numberOfRow = (int)(Math.random()*rowSize);
+        this.rows = shuffleRowsExceptPreviousRows.subList(0,numberOfRow);
+    }
 
     public List<Integer> getRows() {
         return rows;
