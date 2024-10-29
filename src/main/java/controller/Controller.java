@@ -1,36 +1,27 @@
 package controller;
 
-import model.CandidatePoints;
 import model.Ladder;
-import model.Column;
+import model.Row;
+import view.InputView;
+import view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    private List<Integer> settingPreviousRow(List<Column> columns, int columnNumber){
-        List <Integer> previousRows = null;
-        if(columnNumber!=0){
-            previousRows = columns.get(columnNumber-1).getRows();
-        }
-        return previousRows;
-    }
+    InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
 
-    private List<Column> createColumns(int rowSize, int columnSize){
-        List<Column> columns = new ArrayList<>();
-        for (int i = 0; i < columnSize; i++) {
-            List <Integer> previousRows = settingPreviousRow(columns, i);
-            CandidatePoints candidatePoints = new CandidatePoints(previousRows, rowSize);
-            List<Integer> candidateShufflePoints = candidatePoints.getCandidateShufflePoints();
-            Column column = new Column(candidateShufflePoints);
-            columns.add(column);
-        }
-        return columns;
-    }
-
-    public void createLadder(int rowSize, int columnSize) {
+    public void createLadder() {
+        int columnSize = inputView.inputLadderWidth();
+        int rowSize = inputView.inputLadderHeight();
         Ladder ladder = new Ladder(rowSize, columnSize);
-        List<Column> columns = createColumns(rowSize, columnSize);
-        ladder.settingColumns(columns);
+        List<Row> rows = new ArrayList<>();
+        for(int i=0; i< rowSize; i++){
+            Row row = new Row(columnSize);
+            rows.add(row);
+        }
+        ladder.settingColumns(rows);
+        outputView.outputLadder(ladder);
     }
 }
