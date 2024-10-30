@@ -3,11 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Row {
+public class LadderRow {
     private List<Boolean> points = new ArrayList<>();
     private int columnSize;
 
-    public Row(int columnSize) {
+    public LadderRow(int columnSize) {
         this.columnSize = columnSize;
         for (int columnPosition = 0; columnPosition < columnSize; columnPosition++) {
             boolean randomBoolean = chooseTrueOrFalse(this.points, columnPosition);

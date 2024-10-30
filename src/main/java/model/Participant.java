@@ -14,7 +14,19 @@ public class Participant {
         this.name = name;
     }
 
+    public void settingResult(String result){
+        this.result = result;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public String getResult() {
+        return result;
     }
 }
