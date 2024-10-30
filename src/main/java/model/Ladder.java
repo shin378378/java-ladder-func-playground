@@ -6,16 +6,12 @@ public class Ladder {
     private List<Row> rows;
     private int rowSize;
 
-    public Ladder(int rowSize, int columnSize) {
+    public Ladder(int rowSize) {
         this.rowSize = rowSize;
     }
 
-    public void settingColumns(List<Row> rows){
+    public void settingColumns(List<Row> rows) {
         this.rows = rows;
-    }
-
-    public int getRowSize() {
-        return rowSize;
     }
 
     public List<Row> getRows() {

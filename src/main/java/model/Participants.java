@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Participants {
@@ -10,7 +9,7 @@ public class Participants {
         this.participantInventory = participantInventory;
     }
 
-    public List<Participant> getParticitantList() {
+    public List<Participant> getParticipantInventory() {
         return participantInventory;
     }
 }

@@ -1,12 +1,15 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Results {
-    List<String> trialResult = new ArrayList<>();
+    List<String> trialResults;
 
-    public Results(List<String> trialResult) {
-        this.trialResult = trialResult;
+    public Results(List<String> trialResults) {
+        this.trialResults = trialResults;
+    }
+
+    public List<String> getTrialResults() {
+        return trialResults;
     }
 }
