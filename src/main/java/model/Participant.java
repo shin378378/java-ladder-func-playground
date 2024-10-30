@@ -3,8 +3,8 @@ package model;
 public class Participant {
     private static final int NAME_LENGTH_LIMIT=5;
     private int position;
-    String name;
-    String result;
+    private String name;
+    private String result;
 
     public Participant(int position, String name) {
         if(name.length()> NAME_LENGTH_LIMIT) {

@@ -25,14 +25,6 @@ public class OutputView {
         }
     }
 
-    private void outputResults(List<String> trialResults) {
-        System.out.println();
-        for (String trialResult : trialResults) {
-            System.out.printf("%" + COLUMN_LENGTH + "s", trialResult);
-            System.out.printf(" ");
-        }
-    }
-
     public void outputLadder(List<Participant> participantInventory, List<LadderRow> ladderRows, List<String> trialResults) {
         System.out.println("\n"+"사다리 결과"+"\n");
         outputParticipant(participantInventory);
@@ -42,6 +34,14 @@ public class OutputView {
         }
         outputResults(trialResults);
         System.out.println();
+    }
+
+    private void outputResults(List<String> trialResults) {
+        System.out.println();
+        for (String trialResult : trialResults) {
+            System.out.printf("%" + COLUMN_LENGTH + "s", trialResult);
+            System.out.printf(" ");
+        }
     }
 
     private void outputAllParticipantsResult(List<Participant> participantInventory) {

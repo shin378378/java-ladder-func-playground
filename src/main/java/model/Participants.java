@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 
 public class Participants {
-    List<Participant> participantInventory;
+    private List<Participant> participantInventory;
 
     public Participants(List<Participant> participantInventory) {
         this.participantInventory = participantInventory;
