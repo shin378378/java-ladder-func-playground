@@ -1,18 +1,18 @@
 package view;
 
-import model.Participant;
-import model.LadderRow;
-import model.Participants;
+import model.player.Player;
+import model.ladder.LadderRow;
+import model.player.Players;
 
 import java.util.List;
 
 public class OutputView {
     private static final int COLUMN_LENGTH = 5;
 
-    private void outputParticipant(List<Participant> participantInventory) {
-        for (Participant participant : participantInventory) {
-            String participantName = participant.getName();
-            System.out.printf("%" + COLUMN_LENGTH + "s", participantName);
+    private void outputPlayer(List<Player> playerInventory) {
+        for (Player player : playerInventory) {
+            String playerName = player.getName();
+            System.out.printf("%" + COLUMN_LENGTH + "s", playerName);
             System.out.printf(" ");
         }
     }
@@ -30,9 +30,9 @@ public class OutputView {
         if (bool == false) System.out.print("     |");
     }
 
-    public void outputLadder(List<Participant> participantInventory, List<LadderRow> ladderRows, List<String> trialResults) {
+    public void outputLadder(List<Player> playerInventory, List<LadderRow> ladderRows, List<String> trialResults) {
         System.out.println("\n"+"사다리 결과"+"\n");
-        outputParticipant(participantInventory);
+        outputPlayer(playerInventory);
         for (int i = 0; i < ladderRows.size(); i++) {
             List<Boolean> points = ladderRows.get(i).getPoints();
             outputLadderRow(points);
@@ -49,30 +49,30 @@ public class OutputView {
         }
     }
 
-    private void outputAllParticipantsResult(List<Participant> participantInventory) {
-        for (Participant participant : participantInventory) {
-            String participantName = participant.getName();
-            String participantResult = participant.getResult();
-            System.out.println(participantName + " : " + participantResult);
+    private void outputAllPlayersResult(List<Player> playerInventory) {
+        for (Player player : playerInventory) {
+            String playerName = player.getName();
+            String playerResult = player.getResult();
+            System.out.println(playerName + " : " + playerResult);
         }
     }
 
-    private void outputCertainParticipantResult(Participants participants, String participantName) {
-        String participantResult = participants.getCertainParticipantResult(participantName);
-        if(participantResult==null){
+    private void outputCertainPlayerResult(Players players, String playerName) {
+        String playerResult = players.getCertainPlayerResult(playerName);
+        if(playerResult==null){
             System.out.println("존재하지 않는 사용자입니다.");
         }
-        else if(participantResult!=null){
-            System.out.println(participantName + " : " + participantResult);
+        else if(playerResult!=null){
+            System.out.println(playerName + " : " + playerResult);
         }
     }
 
-    public void outputParticipantResult(Participants participants, String participantName) {
+    public void outputPlayerResult(Players players, String playerName) {
             System.out.println("\n" + "실행결과");
-            if (participantName.equals("all")) {
-                outputAllParticipantsResult(participants.getParticipantInventory());
+            if (playerName.equals("all")) {
+                outputAllPlayersResult(players.getPlayerInventory());
                 return;
             }
-            outputCertainParticipantResult(participants, participantName);
+            outputCertainPlayerResult(players, playerName);
     }
 }

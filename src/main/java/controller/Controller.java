@@ -2,6 +2,12 @@ package controller;
 
 import model.*;
 
+import model.ladder.Ladder;
+import model.ladder.LadderRow;
+import model.player.Player;
+import model.player.Players;
+import model.result.DecideResult;
+import model.result.Results;
 import view.InputView;
 import view.OutputView;
 
@@ -15,23 +21,23 @@ public class Controller {
     Splitter splitter = new Splitter();
     OutputView outputView = new OutputView();
 
-    private Participants createParticipants() {
-        String participantNamesBeforeSplit = inputView.inputParticipants();
-        String[] participantNames = splitter.split(participantNamesBeforeSplit);
-        List<Participant> participantsInventory = new ArrayList<>();
-        for (int i = 0; i < participantNames.length; i++) {
-            Participant participant = new Participant(i, participantNames[i]);
-            participantsInventory.add(participant);
+    private Players createPlayers() {
+        String playerNamesBeforeSplit = inputView.inputPlayers();
+        String[] playerNames = splitter.split(playerNamesBeforeSplit);
+        List<Player> playersInventory = new ArrayList<>();
+        for (int i = 0; i < playerNames.length; i++) {
+            Player player = new Player(i, playerNames[i]);
+            playersInventory.add(player);
         }
-        Participants participants = new Participants(participantsInventory);
-        return participants;
+        Players players = new Players(playersInventory);
+        return players;
     }
 
-    private List<String> createResults() {
+    private Results createResults() {
         String trialResultsBeforeSplit = inputView.inputResults();
         String[] trialResults = splitter.split(trialResultsBeforeSplit);
         Results results = new Results(Arrays.asList(trialResults));
-        return results.getTrialResults();
+        return results;
     }
 
     private Ladder createLadder(int columnSize) {
@@ -46,25 +52,26 @@ public class Controller {
         return ladder;
     }
 
-    private List<LadderRow> createLadderResult(List<Participant> participantInventory, List<String> trialResults){
-        Ladder ladder = createLadder(participantInventory.size()-1);
+    private List<LadderRow> createLadderResult(List<Player> playerInventory, List<String> trialResults){
+        Ladder ladder = createLadder(playerInventory.size()-1);
         List<LadderRow> ladderRows = ladder.getRows();
         OutputView outputView = new OutputView();
-        outputView.outputLadder(participantInventory, ladderRows, trialResults);
+        outputView.outputLadder(playerInventory, ladderRows, trialResults);
         return ladder.getRows();
     }
 
     public void playLadderGame(){
-        Participants participants = createParticipants();
-        List<Participant> participantInventory = participants.getParticipantInventory();
-        List<String> trialResults = createResults();
-        List<LadderRow> ladderRows = createLadderResult(participantInventory, trialResults);
+        Players players = createPlayers();
+        List<Player> playerInventory = players.getPlayerInventory();
+        Results results = createResults();
+        List<String> trialResults = results.getTrialResults();
+        List<LadderRow> ladderRows = createLadderResult(playerInventory, trialResults);
         DecideResult decideResult = new DecideResult();
-        decideResult.decideParticipantResult(participantInventory, ladderRows, trialResults);
-        String participantName;
+        decideResult.decidePlayerResult(playerInventory, ladderRows, trialResults);
+        String playerName;
         do{
-            participantName = inputView.inputParticipantToWantResult();
-            outputView.outputParticipantResult(participants, participantName);
-        }while(!participantName.equals("all"));
+            playerName = inputView.inputPlayerToWantResult();
+            outputView.outputPlayerResult(players, playerName);
+        }while(!playerName.equals("all"));
     }
 }

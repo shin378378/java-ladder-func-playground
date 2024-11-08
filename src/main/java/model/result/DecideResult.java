@@ -1,4 +1,7 @@
-package model;
+package model.result;
+
+import model.ladder.LadderRow;
+import model.player.Player;
 
 import java.util.List;
 
@@ -21,12 +24,12 @@ public class DecideResult {
         return columnPosition;
     }
 
-    public void decideParticipantResult(List<Participant> participantInventory, List<LadderRow> ladderRows, List<String> trialResults){
-        for (Participant participant : participantInventory) {
-            int participantPosition = participant.getPosition();
-            int columnPosition = moveRow(ladderRows, participantPosition);
+    public void decidePlayerResult(List<Player> playerInventory, List<LadderRow> ladderRows, List<String> trialResults){
+        for (Player player : playerInventory) {
+            int playerPosition = player.getPosition();
+            int columnPosition = moveRow(ladderRows, playerPosition);
             String result = trialResults.get(columnPosition);
-            participant.settingResult(result);
+            player.settingResult(result);
         }
     }
 }
