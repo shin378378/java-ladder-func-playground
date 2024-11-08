@@ -8,7 +8,7 @@ public class LadderRow {
 
     public LadderRow(int columnSize) {
         for (int columnPosition = 0; columnPosition < columnSize; columnPosition++) {
-            boolean randomBoolean = chooseLadderPoint(this.points, columnPosition);
+            boolean randomBoolean = chooseLadderPoint(columnPosition);
             this.points.add(columnPosition, randomBoolean);
         }
     }
@@ -18,7 +18,7 @@ public class LadderRow {
         return LadderPoint.DISCONNECTED;
     }
 
-    public boolean chooseLadderPoint(List<Boolean> points, int columnPosition) {
+    public boolean chooseLadderPoint(int columnPosition) {
         if (columnPosition > 0 && points.get(columnPosition - 1))
             return LadderPoint.DISCONNECTED.getConnected();
         return randomTrueOrFalse().getConnected();
