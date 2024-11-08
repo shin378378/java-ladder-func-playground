@@ -60,10 +60,10 @@ public class Controller {
         List<LadderRow> ladderRows = createLadderResult(participantInventory, trialResults);
         DecideResult decideResult = new DecideResult();
         decideResult.decideParticipantResult(participantInventory, ladderRows, trialResults);
-        while(true) {
-            String participantName = inputView.inputParticipantToWantResult();
+        String participantName;
+        do{
+            participantName = inputView.inputParticipantToWantResult();
             outputView.outputParticipantResult(participantInventory, participantName);
-            if(participantName.equals("all"))break;
-        }
+        }while(!participantName.equals("all"));
     }
 }
