@@ -1,4 +1,4 @@
-package model;
+package model.tool;
 
 public class Splitter {
     final static private String SPLIT_SIGN = ",";

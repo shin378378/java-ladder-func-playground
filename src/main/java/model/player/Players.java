@@ -12,12 +12,4 @@ public class Players {
     public List<Player> getPlayerInventory() {
         return playerInventory;
     }
-
-    public String getCertainPlayerResult(String playerName){
-        return playerInventory.stream()
-                .filter(player -> playerName.equals(player.getName()))
-                .map(Player::getResult)
-                .findFirst()
-                .orElse(null);
-    }
 }

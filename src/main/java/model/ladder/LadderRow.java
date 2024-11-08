@@ -8,17 +8,21 @@ public class LadderRow {
 
     public LadderRow(int columnSize) {
         for (int columnPosition = 0; columnPosition < columnSize; columnPosition++) {
-            boolean randomBoolean = chooseTrueOrFalse(this.points, columnPosition);
+            boolean randomBoolean = chooseLadderPoint(this.points, columnPosition);
             this.points.add(columnPosition, randomBoolean);
         }
     }
 
-    private boolean chooseTrueOrFalse(List<Boolean> points, int columnPosition) {
-        if (columnPosition == 0) {
-            return Math.random() < 0.5;
-        }
-        if (points.get(columnPosition - 1) == true) return false;
-        return Math.random() < 0.5;
+    private LadderPoint randomTrueOrFalse() {
+        if (Math.random() < 0.5) return LadderPoint.CONNECTED;
+        return LadderPoint.DISCONNECTED;
+    }
+
+    public boolean chooseLadderPoint(List<Boolean> points, int columnPosition) {
+        if (columnPosition > 0 && points.get(columnPosition - 1))
+            return LadderPoint.DISCONNECTED.getConnected();
+        return randomTrueOrFalse().getConnected();
+
     }
 
     public List<Boolean> getPoints() {

@@ -10,4 +10,7 @@ public enum LadderPoint {
         this.isConnected = isConnected;
     }
 
+    public Boolean getConnected() {
+        return isConnected;
+    }
 }
