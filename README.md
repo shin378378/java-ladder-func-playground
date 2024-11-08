@@ -20,6 +20,7 @@
 * chooseTrueOrFalse() //사다리 point 정하는 기능
 ## 4) Participant
 * Participant() //참여자 생성, 참가자이름이 5글자 초과 시 에러발생 기능
+* getCertainParticipantResult //특정 사용자의 결과를 반환하는 기능
 ## 5) Participants
 ## 6) Results
 ## 7) Splitter

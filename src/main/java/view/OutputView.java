@@ -2,6 +2,7 @@ package view;
 
 import model.Participant;
 import model.LadderRow;
+import model.Participants;
 
 import java.util.List;
 
@@ -20,9 +21,13 @@ public class OutputView {
         System.out.println();
         System.out.print("    |");
         for (int i = 0; i < points.size(); i++) {
-            if (points.get(i) == true) System.out.print("-----|");
-            else if (points.get(i) == false) System.out.print("     |");
+            outputLadderColumn(points.get(i));
         }
+    }
+
+    private void outputLadderColumn(Boolean bool){
+        if (bool == true) System.out.print("-----|");
+        if (bool == false) System.out.print("     |");
     }
 
     public void outputLadder(List<Participant> participantInventory, List<LadderRow> ladderRows, List<String> trialResults) {
@@ -52,21 +57,22 @@ public class OutputView {
         }
     }
 
-    private void outputCertainParticipantResult(List<Participant> participantInventory, String participantName) {
-        for (Participant participant : participantInventory) {
-            if (participantName.equals(participant.getName())) {
-                String participantResult = participant.getResult();
-                System.out.println(participantName + " : " + participantResult);
-            }
+    private void outputCertainParticipantResult(Participants participants, String participantName) {
+        String participantResult = participants.getCertainParticipantResult(participantName);
+        if(participantResult==null){
+            System.out.println("존재하지 않는 사용자입니다.");
+        }
+        else if(participantResult!=null){
+            System.out.println(participantName + " : " + participantResult);
         }
     }
 
-    public void outputParticipantResult(List<Participant> participantInventory, String participantName) {
+    public void outputParticipantResult(Participants participants, String participantName) {
             System.out.println("\n" + "실행결과");
             if (participantName.equals("all")) {
-                outputAllParticipantsResult(participantInventory);
+                outputAllParticipantsResult(participants.getParticipantInventory());
                 return;
             }
-            outputCertainParticipantResult(participantInventory, participantName);
+            outputCertainParticipantResult(participants, participantName);
     }
 }

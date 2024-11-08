@@ -15,7 +15,7 @@ public class Controller {
     Splitter splitter = new Splitter();
     OutputView outputView = new OutputView();
 
-    private List<Participant> createParticipants() {
+    private Participants createParticipants() {
         String participantNamesBeforeSplit = inputView.inputParticipants();
         String[] participantNames = splitter.split(participantNamesBeforeSplit);
         List<Participant> participantsInventory = new ArrayList<>();
@@ -24,7 +24,7 @@ public class Controller {
             participantsInventory.add(participant);
         }
         Participants participants = new Participants(participantsInventory);
-        return participants.getParticipantInventory();
+        return participants;
     }
 
     private List<String> createResults() {
@@ -55,7 +55,8 @@ public class Controller {
     }
 
     public void playLadderGame(){
-        List<Participant> participantInventory = createParticipants();
+        Participants participants = createParticipants();
+        List<Participant> participantInventory = participants.getParticipantInventory();
         List<String> trialResults = createResults();
         List<LadderRow> ladderRows = createLadderResult(participantInventory, trialResults);
         DecideResult decideResult = new DecideResult();
@@ -63,7 +64,7 @@ public class Controller {
         String participantName;
         do{
             participantName = inputView.inputParticipantToWantResult();
-            outputView.outputParticipantResult(participantInventory, participantName);
+            outputView.outputParticipantResult(participants, participantName);
         }while(!participantName.equals("all"));
     }
 }

@@ -12,4 +12,12 @@ public class Participants {
     public List<Participant> getParticipantInventory() {
         return participantInventory;
     }
+
+    public String getCertainParticipantResult(String participantName){
+        return participantInventory.stream()
+                .filter(participant -> participantName.equals(participant.getName()))
+                .map(Participant::getResult)
+                .findFirst()
+                .orElse(null);
+    }
 }
