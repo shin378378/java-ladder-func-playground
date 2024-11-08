@@ -42,13 +42,13 @@ public class Controller {
 
     private Ladder createLadder(int columnSize) {
         int rowSize = inputView.inputLadderHeight();
-        Ladder ladder = new Ladder();
+
         List<LadderRow> ladderRows = new ArrayList<>();
         for (int i = 0; i < rowSize; i++) {
             LadderRow ladderRow = new LadderRow(columnSize);
             ladderRows.add(ladderRow);
         }
-        ladder.settingColumns(ladderRows);
+        Ladder ladder = new Ladder(ladderRows);
         return ladder;
     }
 

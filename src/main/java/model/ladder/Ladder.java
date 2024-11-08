@@ -5,7 +5,7 @@ import java.util.List;
 public class Ladder {
     private List<LadderRow> ladderRows;
 
-    public void settingColumns(List<LadderRow> ladderRows) {
+    public Ladder(List<LadderRow> ladderRows) {
         this.ladderRows = ladderRows;
     }
 
