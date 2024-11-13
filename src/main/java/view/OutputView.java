@@ -10,7 +10,7 @@ import java.util.Map;
 public class OutputView {
     private static final int COLUMN_LENGTH = 5;
 
-    private void outputPlayer(List<Player> playerInventory) {
+    private static void outputPlayer(List<Player> playerInventory) {
         for (Player player : playerInventory) {
             String playerName = player.getName();
             System.out.printf("%" + COLUMN_LENGTH + "s", playerName);
@@ -18,7 +18,7 @@ public class OutputView {
         }
     }
 
-    private void outputLadderRow(List<Boolean> points) {
+    private static void outputLadderRow(List<Boolean> points) {
         System.out.println();
         System.out.print("    |");
         for (int i = 0; i < points.size(); i++) {
@@ -26,12 +26,12 @@ public class OutputView {
         }
     }
 
-    private void outputLadderColumn(Boolean bool) {
+    private static void outputLadderColumn(Boolean bool) {
         if (bool == true) System.out.print("-----|");
         if (bool == false) System.out.print("     |");
     }
 
-    public void outputLadder(List<Player> playerInventory, List<LadderRow> ladderRows, List<String> trialResults) {
+    public static void outputLadder(List<Player> playerInventory, List<LadderRow> ladderRows, List<String> trialResults) {
         System.out.println("\n" + "사다리 결과" + "\n");
         outputPlayer(playerInventory);
         for (int i = 0; i < ladderRows.size(); i++) {
@@ -42,7 +42,7 @@ public class OutputView {
         System.out.println();
     }
 
-    private void outputResults(List<String> trialResults) {
+    private static void outputResults(List<String> trialResults) {
         System.out.println();
         for (String trialResult : trialResults) {
             System.out.printf("%" + COLUMN_LENGTH + "s", trialResult);
@@ -50,7 +50,7 @@ public class OutputView {
         }
     }
 
-    private void outputAllPlayersResult(PlayerResults playerResults) {
+    private static void outputAllPlayersResult(PlayerResults playerResults) {
         Map<String, String> PlayerResultsInventory = playerResults.getPlayerResultsInventory();
         for (Map.Entry<String, String> stringStringEntry : PlayerResultsInventory.entrySet()) {
             String playerName = stringStringEntry.getKey();
@@ -59,7 +59,7 @@ public class OutputView {
         }
     }
 
-    private void outputCertainPlayerResult(PlayerResults playerResults, String playerName) {
+    private static void outputCertainPlayerResult(PlayerResults playerResults, String playerName) {
         String playerResult = playerResults.getPlayerResult(playerName);
         if (playerResult == null) {
             System.out.println("존재하지 않는 사용자입니다.");
@@ -68,7 +68,7 @@ public class OutputView {
         }
     }
 
-    public void outputPlayerResult(PlayerResults playerResults, String playerName) {
+    public static void outputPlayerResult(PlayerResults playerResults, String playerName) {
         System.out.println("\n" + "실행결과");
         if (playerName.equals("all")) {
             outputAllPlayersResult(playerResults);

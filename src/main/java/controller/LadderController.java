@@ -15,10 +15,10 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Controller {
-    InputView inputView = new InputView();
-    Splitter splitter = new Splitter();
-    OutputView outputView = new OutputView();
+public class LadderController {
+    static final InputView inputView = new InputView();
+    static final Splitter splitter = new Splitter();
+    static final OutputView outputView = new OutputView();
 
     private Players createPlayers() {
         String playerNamesBeforeSplit = inputView.inputPlayers();
