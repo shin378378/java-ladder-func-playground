@@ -27,8 +27,12 @@ public class OutputView {
     }
 
     private static void outputLadderColumn(Boolean bool) {
-        if (bool == true) System.out.print("-----|");
-        if (bool == false) System.out.print("     |");
+        if (bool == true) {
+            System.out.print("-----|");
+        }
+        if (bool == false) {
+            System.out.print("     |");
+        }
     }
 
     public static void outputLadder(List<Player> playerInventory, List<LadderRow> ladderRows, List<String> trialResults) {

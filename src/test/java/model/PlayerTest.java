@@ -13,7 +13,6 @@ public class PlayerTest {
             assertDoesNotThrow(() -> new Player(5,"abcd"));
     }
 
-
     @Test
     void 이름이_5자_초과일_때_오류가_발생하는_지_확인() {
         //Given & When & Then
