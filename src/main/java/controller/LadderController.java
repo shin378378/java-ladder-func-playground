@@ -23,12 +23,7 @@ public class LadderController {
     private Players createPlayers() {
         String playerNamesBeforeSplit = inputView.inputPlayers();
         String[] playerNames = splitter.splitWithComma(playerNamesBeforeSplit);
-        List<Player> playersInventory = new ArrayList<>();
-        for (int i = 0; i < playerNames.length; i++) {
-            Player player = new Player(i, playerNames[i]);
-            playersInventory.add(player);
-        }
-        Players players = new Players(playersInventory);
+        Players players = new Players(playerNames);
         return players;
     }
 
