@@ -13,7 +13,7 @@ public class SplitterTest {
         String beforeSplit = "참여자1, 참여자2, 참여자3,참여자4";
 
         //When
-        String[] afterSplit = splitter.split(beforeSplit);
+        String[] afterSplit = splitter.splitWithComma(beforeSplit);
 
         //Then
         softly.assertThat(afterSplit.length).isEqualTo(4);

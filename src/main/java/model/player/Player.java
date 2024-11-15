@@ -2,6 +2,7 @@ package model.player;
 
 public class Player {
     private static final int NAME_LENGTH_LIMIT = 5;
+
     private int position;
     private String name;
 

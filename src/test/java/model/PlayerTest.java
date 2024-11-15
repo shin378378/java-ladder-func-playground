@@ -20,5 +20,4 @@ public class PlayerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("참가자 이름이 5자 초과입니다.");
     }
-
 }

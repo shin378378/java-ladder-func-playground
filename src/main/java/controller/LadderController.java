@@ -22,7 +22,7 @@ public class LadderController {
 
     private Players createPlayers() {
         String playerNamesBeforeSplit = inputView.inputPlayers();
-        String[] playerNames = splitter.split(playerNamesBeforeSplit);
+        String[] playerNames = splitter.splitWithComma(playerNamesBeforeSplit);
         List<Player> playersInventory = new ArrayList<>();
         for (int i = 0; i < playerNames.length; i++) {
             Player player = new Player(i, playerNames[i]);
@@ -34,7 +34,7 @@ public class LadderController {
 
     private List<String> createLadderResults() {
         String trialResultsBeforeSplit = inputView.inputResults();
-        String[] trialResults = splitter.split(trialResultsBeforeSplit);
+        String[] trialResults = splitter.splitWithComma(trialResultsBeforeSplit);
         List<String> ladderResults = Arrays.asList(trialResults);
         return ladderResults;
     }
