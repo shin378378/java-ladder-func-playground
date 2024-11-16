@@ -41,15 +41,6 @@ public class Ladder {
     }
 
     public List<PlayerResultDto> decidePlayerResults(List<Player> playerInventory) {
-//        Map<String, String> playerResultsInventory = new HashMap<>();
-//        for (Player player : playerInventory) {
-//            int playerPosition = player.getPosition();
-//            int columnPosition = moveRow(ladderRows, playerPosition);
-//            String playerName = player.getName();
-//            String playerResult = ladderResults.get(columnPosition);
-//            playerResultsInventory.put(playerName, playerResult);
-//        }
-//        return playerResultsInventory;
         List<PlayerResultDto> playersInventory = new ArrayList<>();
         for (Player player : playerInventory) {
             int playerPosition = player.getPosition();

@@ -2,6 +2,7 @@ package model.ladder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LadderRow {
     private List<Boolean> points = new ArrayList<>();
@@ -14,7 +15,7 @@ public class LadderRow {
     }
 
     private LadderPoint randomTrueOrFalse() {
-        if (Math.random() < 0.5) return LadderPoint.CONNECTED;
+        if (ThreadLocalRandom.current().nextDouble() < 0.5) return LadderPoint.CONNECTED;
         return LadderPoint.DISCONNECTED;
     }
 
