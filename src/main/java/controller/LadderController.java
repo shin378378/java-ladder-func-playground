@@ -3,6 +3,7 @@ package controller;
 import model.ladder.Ladder;
 import model.ladder.LadderRow;
 import model.player.Player;
+import model.player.PlayerResultDto;
 import model.player.PlayerResults;
 import model.player.Players;
 import model.tool.Splitter;
@@ -48,7 +49,7 @@ public class LadderController {
 
     private PlayerResults createPlayerResults(Players players, Ladder ladder) {
         List<Player> playerInventory = players.getPlayerInventory();
-        Map<String, String> playerResultsInventory = ladder.decidePlayerResults(playerInventory);
+        List<PlayerResultDto> playerResultsInventory = ladder.decidePlayerResults(playerInventory);
         PlayerResults playerResults = new PlayerResults(playerResultsInventory);
         return playerResults;
     }

@@ -1,7 +1,9 @@
 package model.ladder;
 
 import model.player.Player;
+import model.player.PlayerResultDto;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,16 +40,25 @@ public class Ladder {
         return columnPosition;
     }
 
-    public Map<String, String> decidePlayerResults(List<Player> playerInventory) {
-        Map<String, String> playerResultsInventory = new HashMap<>();
+    public List<PlayerResultDto> decidePlayerResults(List<Player> playerInventory) {
+//        Map<String, String> playerResultsInventory = new HashMap<>();
+//        for (Player player : playerInventory) {
+//            int playerPosition = player.getPosition();
+//            int columnPosition = moveRow(ladderRows, playerPosition);
+//            String playerName = player.getName();
+//            String playerResult = ladderResults.get(columnPosition);
+//            playerResultsInventory.put(playerName, playerResult);
+//        }
+//        return playerResultsInventory;
+        List<PlayerResultDto> playersInventory = new ArrayList<>();
         for (Player player : playerInventory) {
             int playerPosition = player.getPosition();
             int columnPosition = moveRow(ladderRows, playerPosition);
             String playerName = player.getName();
             String playerResult = ladderResults.get(columnPosition);
-            playerResultsInventory.put(playerName, playerResult);
+            playersInventory.add(new PlayerResultDto(playerName, playerResult));
         }
-        return playerResultsInventory;
+        return playersInventory;
     }
 
     public List<LadderRow> getLadderRows() {

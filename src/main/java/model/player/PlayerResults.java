@@ -1,19 +1,24 @@
 package model.player;
 
+import java.util.List;
 import java.util.Map;
 
 public class PlayerResults {
-    private Map<String, String> PlayerResultsInventory;
+    private List<PlayerResultDto> PlayerResultsInventory;
 
-    public PlayerResults(Map<String, String> playerResultsInventory) {
+    public PlayerResults(List<PlayerResultDto> playerResultsInventory) {
         PlayerResultsInventory = playerResultsInventory;
     }
 
     public String getPlayerResult(String playerName) {
-        return PlayerResultsInventory.get(playerName);
+        String result = null;
+        for (PlayerResultDto playerResultDto : PlayerResultsInventory) {
+            if (playerName.equals(playerResultDto.getPlayerName())) result = playerResultDto.getPlayerResult();
+        }
+        return result;
     }
 
-    public Map<String, String> getPlayerResultsInventory() {
+    public List<PlayerResultDto> getPlayerResultsInventory() {
         return PlayerResultsInventory;
     }
 }

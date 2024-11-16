@@ -2,6 +2,7 @@ package view;
 
 import model.player.Player;
 import model.ladder.LadderRow;
+import model.player.PlayerResultDto;
 import model.player.PlayerResults;
 
 import java.util.List;
@@ -55,10 +56,10 @@ public class OutputView {
     }
 
     private static void outputAllPlayersResult(PlayerResults playerResults) {
-        Map<String, String> PlayerResultsInventory = playerResults.getPlayerResultsInventory();
-        for (Map.Entry<String, String> stringStringEntry : PlayerResultsInventory.entrySet()) {
-            String playerName = stringStringEntry.getKey();
-            String playerResult = stringStringEntry.getValue();
+        List<PlayerResultDto> PlayerResultsInventory = playerResults.getPlayerResultsInventory();
+        for (PlayerResultDto playerResultDto : PlayerResultsInventory) {
+            String playerName = playerResultDto.getPlayerName();
+            String playerResult = playerResultDto.getPlayerResult();
             System.out.println(playerName + " : " + playerResult);
         }
     }
