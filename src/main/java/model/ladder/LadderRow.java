@@ -14,7 +14,7 @@ public class LadderRow {
         }
     }
 
-    private LadderPoint randomTrueOrFalse() {
+    private LadderPoint randomConnectedOrDisconnected() {
         if (ThreadLocalRandom.current().nextDouble() < 0.5) return LadderPoint.CONNECTED;
         return LadderPoint.DISCONNECTED;
     }
@@ -22,7 +22,7 @@ public class LadderRow {
     public boolean chooseLadderPoint(int columnPosition) {
         if (columnPosition > 0 && points.get(columnPosition - 1))
             return LadderPoint.DISCONNECTED.getConnected();
-        return randomTrueOrFalse().getConnected();
+        return randomConnectedOrDisconnected().getConnected();
 
     }
 
